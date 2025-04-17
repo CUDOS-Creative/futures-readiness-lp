@@ -1,0 +1,15 @@
+.button {
+	background-color: $blue;
+	color: $white;
+	display: inline-block;
+	cursor: pointer;
+	font-weight: 600;
+	padding: 0.85em 2em;
+	border-radius: 100px;
+	transition: background 0.3s ease;
+
+	&:hover,
+	&:focus {
+		background-color: $pink;
+	}
+}

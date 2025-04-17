@@ -1,0 +1,43 @@
+{% extends 'layouts/base.twig' %}
+
+{# {% block hero %}
+	{% include 'partials/hero-home.twig' %}
+{% endblock %} #}
+
+{% block content %}
+	<section class="section section--pink">
+		<div class="container">
+			<div class="text-center" data-aos="fade-up">
+				<h1 class="mb-8">
+					Website Coming Soon...
+				</h1>
+				<p class="w-med">
+					Navigating Al critically and in real time through fortnightly
+					interactive videos, Futures Readiness helps students & staff make
+					sense of the fastest & most profound technological shift in human
+					history.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section--grey">
+		<div class="container">
+			<div class="text-center">
+				<h2 class="blue mb-20" data-aos="fade-up">
+					Be the first to know
+				</h2>
+			</div>
+			<div class="contact-form">
+				{{
+					fn(
+						'do_shortcode',
+						'[contact-form-7 id="acfd967" title="Contact form 1"]'
+					)
+				}}
+			</div>
+		</div>
+
+		<img class="wheel" src="{{ site.theme.link }}/static/wheel.png" alt="" />
+	</section>
+{% endblock %}

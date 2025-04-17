@@ -1,0 +1,24 @@
+<article class="tease-search tease-search--{{ post.type }}"
+	id="tease-{{ post.id }}">
+	{% block content %}
+		{% if post.thumbnail %}
+			<figure class="tease-search__image">
+				<img class="thumbnail"
+					src="{{ post.thumbnail.src|resize(300, 300, 'center') }}"
+					alt="{{ post.thumbnail.alt }}" />
+			</figure>
+		{% endif %}
+		<div class="tease-search__content">
+			<h3>
+				<a href="{{ post.link }}">{{ post.title }}</a>
+			</h3>
+			<p>
+				{{ post.excerpt.read_more(false) }}
+			</p>
+			{% set categories = post.terms('category') %}
+			{% if categories %}
+				{% include 'partials/categories.twig' %}
+			{% endif %}
+		</div>
+	{% endblock %}
+</article>

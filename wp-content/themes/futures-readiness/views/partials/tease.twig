@@ -1,0 +1,47 @@
+{% set image = image|default(post.thumbnail) %}
+{% set title = title|default(post.title) %}
+{% set excerpt = excerpt|default(post.excerpt.read_more(false)) %}
+{% set link = link|default(post.link) %}
+{% set button_text = button_text|default('Learn more') %}
+{% set target = target|default('_self') %}
+
+<div class="tease tease--{{ post.type }} tease--{{ class }}">
+	{% if image %}
+		<figure class="tease__image">
+			<img class="br-small"
+				src="{{ image.src|resize(690, 420, 'center') }}"
+				alt="{{ image.alt }}" />
+		</figure>
+	{% endif %}
+	{% if date %}
+		<span class="tease__date">{{ date }}</span>
+	{% endif %}
+	<h3 class="mt-8 mb-4">
+		{{ title }}
+	</h3>
+	{% if excerpt %}
+		<p class="tease__excerpt mb-8">
+			{{ excerpt }}
+		</p>
+	{% endif %}
+
+	{% if link %}
+		{% if class == 'centered' or class == 'large' %}
+			<a class="link" href="{{ link }}" target="{{ target }}">
+				<span>{{ button_text }}</span>
+				<svg width="9"
+					height="12"
+					viewBox="0 0 9 12"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg">
+					<path d="M2.37372 11.9496L8.08072 6.24264L2.37372 0.535645L0.959717 1.94964L5.25272 6.24264L0.959717 10.5356L2.37372 11.9496Z"
+						fill="#0B1416" />
+				</svg>
+			</a>
+		{% else %}
+			<a class="button" href="{{ link }}" target="{{ target }}">
+				<span>{{ button_text }}</span>
+			</a>
+		{% endif %}
+	{% endif %}
+</div>

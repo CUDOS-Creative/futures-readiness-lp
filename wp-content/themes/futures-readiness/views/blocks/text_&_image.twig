@@ -1,0 +1,35 @@
+{% set align = block.alignment == 'right' ? true : false %}
+
+<section class="section section--{{ block.background_colour }}">
+	<div class="container">
+		<div class="flex flex-col lg:items-end lg:grid grid-cols-12 gap-6 lg:gap-20">
+			<div class="col-span-6 {{
+				block.alignment == 'left'
+					? 'lg:order-2'
+					: ''
+				}}">
+				<div class="wysiwyg wysiwyg--ut xl:mb-14">
+					<h2 class="{{ block.heading_colour == 'white' ? 'white' : '' }}">
+						{{ block.title }}
+					</h2>
+					{{ block.text }}
+				</div>
+			</div>
+
+			<div class="col-span-6 {{
+				block.alignment == 'left'
+					? 'lg:order-1'
+					: ''
+				}}">
+				{% set image =
+					get_image(block.image).src|resize(616, 640, 'center')
+				%}
+				<figure>
+					<img class="br-small"
+						src="{{ image }}"
+						alt="{{ get_image(block.image).alt }}" />
+				</figure>
+			</div>
+		</div>
+	</div>
+</section>

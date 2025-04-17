@@ -1,0 +1,15 @@
+{% set author_id = post.author.id %}
+{% set avatar = function('get_avatar_url', author_id) %}
+
+<div class="post-meta">
+	<div class="post-meta__author">
+		{% if avatar %}
+			<img src="{{ avatar }}" alt="{{ post.author.name }}" />
+		{% endif %}
+		<h4>
+			{{ post.author.name }}
+		</h4>
+	</div>
+
+	{% include 'partials/categories.twig' %}
+</div>

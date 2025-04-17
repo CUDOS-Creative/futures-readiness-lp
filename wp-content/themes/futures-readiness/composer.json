@@ -1,0 +1,60 @@
+{
+  "name": "timber/starter-theme",
+  "description": "Starter theme to build a Timber theme",
+  "type": "wordpress-theme",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Erik van der Bas",
+      "email": "erik@basedonline.nl",
+      "homepage": "https://basedonline.nl"
+    },
+    {
+      "name": "Lukas Gächter",
+      "email": "lukas.gaechter@mind.ch",
+      "homepage": "https://www.mind.ch"
+    },
+    {
+      "name": "Nicolas Lemoine",
+      "email": "nico@n5s.dev",
+      "homepage": "https://n5s.dev"
+    },
+    {
+      "name": "Jared Novack",
+      "email": "jared@upstatement.com",
+      "homepage": "https://upstatement.com"
+    },
+    {
+      "name": "Timber Community",
+      "homepage": "https://github.com/timber/timber"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
+  "require": {
+    "timber/timber": "^2.2"
+  },
+  "require-dev": {
+    "yoast/wp-test-utils": "^1.0",
+    "wp-coding-standards/wpcs": "^3.1",
+    "phpcompatibility/php-compatibility": "^9",
+    "szepeviktor/phpstan-wordpress": "^1.3",
+    "10up/phpcs-composer": "^3.0"
+  },
+  "scripts": {
+    "test": "phpunit",
+    "cs": "@php ./vendor/bin/phpcs",
+    "cs:fix": "@php ./vendor/bin/phpcbf",
+    "phpstan": "@php ./vendor/bin/phpstan analyse"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "roots/wordpress-core-installer": true
+    }
+  }
+}

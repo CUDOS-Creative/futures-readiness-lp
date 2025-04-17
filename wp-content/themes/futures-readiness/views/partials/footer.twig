@@ -1,0 +1,34 @@
+<div class="gradient"></div>
+<footer id="footer" class="footer">
+	<div class="container">
+		<div class="footer__inner">
+			<div class="footer__logo">
+				{{ theme_get_svg(site.theme.link ~ '/static/logo-footer.svg') }}
+			</div>
+
+			<p class="footer_address">
+				Kittoe Road,<br />
+				Sutton Coldfield<br />
+				Birmingham,<br />
+				B74 4RZ
+			</p>
+
+			<p class="footer__contact">
+				<span>
+					<i>{{ theme_get_svg(site.theme.link ~ '/static/t.svg') }}</i> 0121
+					000 0000
+				</span>
+				<span class="email">
+					<i>{{ theme_get_svg(site.theme.link ~ '/static/e.svg') }}</i> AZarifeh@arthurterry.bham.sch.uk
+				</span>
+			</p>
+
+			<a class="footer__social"
+				href="{{ linkedin ? linkedin : '#' }}"
+				target="_blank">
+				{{ theme_get_svg(site.theme.link ~ '/static/linkedin.svg') }}
+			</a>
+		</div>
+	</div>
+</footer>
+<div class="gradient"></div>

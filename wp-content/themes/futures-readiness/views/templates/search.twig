@@ -1,0 +1,39 @@
+{# see `templates/archive.twig` for an alternative strategy of extending templates #}
+{% extends 'layouts/base.twig' %}
+
+{% block hero %}
+	{% set search_query = fn('get_query_var', 's') %}
+
+	<div class="page-title">
+		<div class="container">
+			<h1>
+				Search results for: "{{ search_query }}"
+			</h1>
+		</div>
+	</div>
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="flex flex-col gap-6">
+			<p>
+				{% if posts.pagination.total > 1 %}
+					Page {{ posts.pagination.current }} of {{
+						posts.pagination.total
+					}}.
+				{% endif %}Showing {{ posts|length }} of {{ posts.found_posts }} results.
+			</p>
+			{% for post in posts %}
+				{% include ['partials/tease-search.twig'] %}
+			{% endfor %}
+
+			{% include 'partials/pagination.twig' with {
+				pagination: posts.pagination({
+					show_all: false,
+					mid_size: 3,
+					end_size: 2
+				})
+			} %}
+		</div>
+	</div>
+{% endblock %}

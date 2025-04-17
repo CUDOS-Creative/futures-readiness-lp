@@ -1,0 +1,44 @@
+<div class="home-hero">
+	<div class="swiper swiper--hero js-swiper-hero">
+		<div class="swiper-wrapper">
+			{% for item in hero %}
+				<div class="swiper-slide">
+					<img src="{{ get_image(item.image).src }}"
+						alt="{{ get_image(item.image).alt }}" />
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="home-hero__logo hidden lg:flex" data-aos="fade-up">
+		{{ theme_get_svg(site.theme.link ~ '/static/logo.svg') }}
+	</div>
+
+	<div class="home-hero__overlay">
+		<div class="container">
+			<div class="home-hero__overlay-inner">
+				<div class="flex lg:hidden home-hero__mobile-logo">
+					{{ theme_get_svg(site.theme.link ~ '/static/logo.svg') }}
+				</div>
+				<div class="swiper swiper--hero-caption js-swiper-hero-caption">
+					<div class="swiper-wrapper">
+						{% for item in hero %}
+							<div class="swiper-slide">
+								<div class="swiper-slide__inner">
+									<h2>
+										{{ item.text }}
+									</h2>
+									{% include 'partials/button.twig' with {
+										button: item.button,
+										class: 'button--hero'
+									} %}
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="hero-pagination swiper-pagination"></div>
+			</div>
+		</div>
+	</div>
+</div>

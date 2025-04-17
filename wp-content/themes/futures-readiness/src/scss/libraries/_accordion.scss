@@ -1,0 +1,74 @@
+.ac {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	h3 {
+		margin: 0;
+	}
+
+	button {
+		width: 100%;
+		padding: 1.25rem 3rem 1.25rem 0.5rem;
+		text-align: left;
+		position: relative;
+		z-index: 2;
+	}
+
+	.ac-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		position: relative;
+
+		.ac-icon {
+			margin-right: 0.5rem;
+			display: block;
+			position: absolute;
+			top: 50%;
+			margin-top: -8px;
+			right: 0;
+
+			svg {
+				width: 16px;
+				height: 16px;
+			}
+		}
+	}
+}
+
+.ac .ac-panel {
+	overflow: hidden;
+	opacity: 0;
+
+	.ac-panel__inner {
+		padding: 1rem;
+		padding-bottom: 2rem;
+	}
+}
+
+.ac.js-enabled .ac-panel {
+	visibility: hidden;
+	opacity: 0;
+	// closing animation
+	transition:
+		opacity 0.2s ease,
+		height 0.5s ease 0.05s,
+		visibility 0.3s ease;
+}
+.ac.is-active .ac-panel {
+	visibility: visible;
+	opacity: 1;
+	// opening animation
+	transition:
+		opacity 0.4s ease 0.1s,
+		height 0.5s ease,
+		visibility 0.3s ease;
+}
+
+.ac.is-active .ac-header {
+	.ac-icon {
+		path {
+			&:first-of-type {
+				display: none;
+			}
+		}
+	}
+}

@@ -1,0 +1,43 @@
+<section class="section section--main">
+	<div class="container">
+		<div class="flex flex-col lg:grid grid-cols-12 gap-6 lg:gap-20">
+			<div class="col-span-6 lg:pt-8">
+				<div class="wysiwyg wysiwyg--ut">
+					<h2 class="white">
+						{{ block.title }}
+					</h2>
+					<p>
+						<strong>{{ block.description }}</strong>
+					</p>
+					<div class="contact-form contact-form--left pt-4">
+						{{ fn('do_shortcode', block.cf7_shortcode) }}
+					</div>
+				</div>
+			</div>
+
+			<div class="col-span-6 hidden lg:block">
+				{% set image =
+					get_image(block.image).src|resize(616, 734, 'center')
+				%}
+				<figure>
+					<img class="br"
+						src="{{ image }}"
+						alt="{{ get_image(block.image).alt }}" />
+				</figure>
+			</div>
+		</div>
+
+		{% if block.footer_title and block.footer_text %}
+			<div class="grid grid-cols-12 mt-6 lg:mt-20">
+				<div class="col-span-12 lg:col-span-8">
+					<h3 class="h4 white">
+						{{ block.footer_title }}
+					</h3>
+					<p>
+						{{ block.footer_text }}
+					</p>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+</section>

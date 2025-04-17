@@ -1,0 +1,11 @@
+<ul class="social__links">
+	{% for item in social %}
+		<li>
+			<a href="{{ item.link.url }}"
+				target="{{ item.link.target ? item.link.target : '_self' }}"
+				aria-label="{{ item.link.title }}">
+				{{ theme_get_svg(item.icon) }}
+			</a>
+		</li>
+	{% endfor %}
+</ul>

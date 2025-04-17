@@ -1,0 +1,17 @@
+{% set image = get_image(block.image) %}
+
+<div class="container">
+	<div class="flex flex-col md:grid grid-cols-12 gap-8">
+		<div class="col-span-12 xl:col-span-10 xl:col-start-2">
+			<figure>
+				{% include 'partials/image.twig' %}
+
+				{% if image.caption %}
+					<figcaption>
+						{{ image.caption }}
+					</figcaption>
+				{% endif %}
+			</figure>
+		</div>
+	</div>
+</div>

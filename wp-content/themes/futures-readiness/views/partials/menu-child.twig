@@ -1,0 +1,13 @@
+{% if menu %}
+	<div class="dropdown">
+		<ul class="dropdown__list">
+			{% for item in items %}
+				<li class="{{ item.classes|join(' ') }}">
+					<a target="{{ item.target }}" href="{{ item.link }}">
+						{{ item.title }}
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endif %}

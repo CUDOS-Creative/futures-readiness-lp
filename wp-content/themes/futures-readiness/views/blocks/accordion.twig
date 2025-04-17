@@ -1,0 +1,43 @@
+<section class="section section--secondary">
+	<div class="container">
+		{% if block.title %}
+			<div class="text-center">
+				<h2 class="tertiary mb-5">
+					{{ block.title }}
+				</h2>
+			</div>
+		{% endif %}
+
+		{% if block.description %}
+			<div class="text-center width-m mb-12 lg:mb-20">
+				<p>
+					{{ block.description }}
+				</p>
+			</div>
+		{% endif %}
+
+		<div class="col-span-10 col-start-2">
+			{% include 'partials/accordion.twig' with {
+				accordion: get_posts(block.accordion),
+				title: block.title,
+				closed: block.closed
+			} %}
+		</div>
+
+		{% if block.cta_text %}
+			<div class="text-center mt-6 lg:mt-20">
+				<h3 class="white lc">
+					{{ block.cta_title }}
+				</h3>
+				<p>
+					{{ block.cta_text }}
+				</p>
+
+				{% include 'partials/button.twig' with {
+					button: block.button,
+					class: 'button--white button--outline mt-4'
+				} %}
+			</div>
+		{% endif %}
+	</div>
+</section>

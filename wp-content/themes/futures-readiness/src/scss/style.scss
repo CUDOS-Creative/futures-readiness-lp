@@ -1,0 +1,12 @@
+@import "node_modules/tailwindcss/base";
+@import "node_modules/tailwindcss/components";
+@import "node_modules/tailwindcss/utilities";
+
+@import "/settings/*";
+@import "/mixins/*";
+@import "./hamburgers/hamburgers";
+@import "./libraries/aos/aos";
+@import "./libraries/accordion";
+@import "./libraries/swiper/swiper";
+@import "/elements/*";
+@import "/components/*";

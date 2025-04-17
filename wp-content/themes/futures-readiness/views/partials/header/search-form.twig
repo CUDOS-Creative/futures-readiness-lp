@@ -1,0 +1,11 @@
+<form role="search" class="header__search" method="get" action="{{ site.url }}">
+	<label for="search" class="screen-reader-text">
+		{{ __('Search for:', 'textdomain') }}
+	</label>
+	<input type="search"
+		id="search"
+		name="s"
+		value="{{ search_query }}"
+		placeholder="{{ __('Search', 'textdomain') }}" />
+	<button type="submit">{{ __('Search', 'textdomain') }}</button>
+</form>

@@ -1,0 +1,40 @@
+{% extends 'layouts/base.twig' %}
+
+{% block content %}
+	<div class="container">
+		<div class="product">
+			{% do action('woocommerce_before_single_product') %}
+
+			<article itemscope
+				itemtype="https://schema.org/Product"
+				class="flex flex-col lg:grid grid-cols-12 gap-6 lg:gap-12 {{
+				post.class
+				}}">
+				<div class="col-span-6">
+					{% if post._product_image_gallery != false %}
+						{% do action('woocommerce_before_single_product_summary') %}
+					{% else %}
+						<img class="single-product-image"
+							src="{{ post.thumbnail.src('shop_single') }}" />
+					{% endif %}
+				</div>
+
+				<div class="col-span-6">
+					<div class="summary entry-summary">
+						{% do action('woocommerce_single_product_summary') %}
+					</div>
+
+					<meta itemprop="url" content="{{ post.link }}" />
+				</div>
+			</article>
+
+			{# {% include ['partials/tease-product.twig'] with {
+			products: related_products
+		} %} #}
+
+			{% do action('woocommerce_after_single_product_summary') %}
+
+			{% do action('woocommerce_after_single_product') %}
+		</div>
+	</div>
+{% endblock %}

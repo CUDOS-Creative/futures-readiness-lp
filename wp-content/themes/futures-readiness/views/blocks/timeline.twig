@@ -1,0 +1,44 @@
+<section class="section overflow-hidden">
+	<div class="container">
+		{% if block.title %}
+			<div class="text-center">
+				<h2 class="mb-5">
+					{{ block.title }}
+				</h2>
+			</div>
+		{% endif %}
+
+		{% if block.description %}
+			<div class="text-center width-m mb-16 lg:mb-20">
+				<p>
+					{{ block.description }}
+				</p>
+			</div>
+		{% endif %}
+		<div class="timeline">
+			{% for item in block.steps %}
+				<div class="timeline-item">
+					<figure>
+						<img src="{{ get_image(item.image).src|resize(
+								204,
+								204,
+								'center'
+							) }}"
+							alt="{{ get_image(image).alt }}"
+							height="204"
+							width="204" />
+					</figure>
+					<span class="timeline-item__line"></span>
+					<div class="timeline-item__content">
+						<h3>
+							{{ item.title }}
+						</h3>
+						<p>
+							{{ item.description }}
+						</p>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>

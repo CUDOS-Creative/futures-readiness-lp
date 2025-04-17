@@ -1,0 +1,41 @@
+{% extends 'layouts/base.twig' %}
+
+{% block hero %}
+	{% include 'partials/hero.twig' %}
+{% endblock %}
+
+{% block content %}
+	<article class="article post-type-{{ post.type }}" id="post-{{ post.id }}">
+		<div class="container article-wrapper">
+			<div class="lg:grid grid-cols-12 gap-8 lg:gap-20">
+				{% if toc and show_toc %}
+					<div class="col-span-4 xl:pe-20">
+						<nav class="table-of-contents lg:pt-4">
+							<div class="toc-container">
+								<h2 class="h5">
+									Table of contents
+								</h2>
+								<button class="toc-toggle-button"
+									aria-label="Toggle table of contents menu.">
+									Table of contents
+								</button>
+								{% include 'partials/toc.twig' with {
+									items: toc
+								} %}
+							</div>
+						</nav>
+					</div>
+				{% endif %}
+				<div class="{{
+					show_toc
+						? 'col-span-8'
+						: 'col-span-8 col-start-3'
+					}}">
+					<div class="wysiwyg wysiwyg--single lg:pt-4">
+						{{ post.content_with_anchors|raw }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</article>
+{% endblock %}

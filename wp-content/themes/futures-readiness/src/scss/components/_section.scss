@@ -1,0 +1,54 @@
+.section {
+	padding: 7rem 0;
+	&--pink {
+		background-color: $pink;
+		color: $white;
+
+		@include up(xl) {
+			background-image: url('../../static/shape-white.svg');
+			background-repeat: no-repeat;
+			background-position: calc(100% - 3rem) center;
+		}
+	}
+
+	&--grey {
+		background-color: $grey;
+		position: relative;
+
+		@include up(lg) {
+			background-image: url('../../static/shape-mix.svg'),
+				url('../../static/shape-blue.svg');
+			background-repeat: no-repeat, no-repeat;
+			background-position:
+				3rem -3rem,
+				calc(100% - 3rem) calc(100% - 2rem);
+		}
+
+		.container {
+			position: relative;
+			z-index: 2;
+		}
+
+		.wheel {
+			position: absolute;
+			bottom: 2rem;
+			left: 0;
+			transform: translateX(-50%);
+			z-index: 1;
+			width: 280px;
+			height: 280px;
+
+			@include down(xxl) {
+				margin-left: -3rem;
+			}
+
+			@include down(lg) {
+				display: none;
+			}
+		}
+	}
+
+	@include down(md) {
+		padding: 4rem 0;
+	}
+}

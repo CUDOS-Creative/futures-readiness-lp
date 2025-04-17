@@ -1,0 +1,43 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+	font-weight: 700;
+	line-height: 1.2;
+	font-family: 'Reem Kufi', sans-serif;
+	font-optical-sizing: auto;
+	text-transform: uppercase;
+}
+
+h1 {
+	font-size: rem(70);
+
+	@include down(lg) {
+		font-size: rem(48);
+	}
+
+	@include down(md) {
+		font-size: rem(32);
+	}
+}
+
+h2,
+.h2 {
+	font-size: rem(44);
+
+	@include down(lg) {
+		font-size: rem(32);
+	}
+
+	@include down(md) {
+		font-size: rem(24);
+	}
+}

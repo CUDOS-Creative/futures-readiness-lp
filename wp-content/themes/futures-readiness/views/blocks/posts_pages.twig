@@ -1,0 +1,27 @@
+{% set block_posts = get_posts(block.posts) %}
+
+<div class="container">
+	<div class="spread">
+		{% if block.title %}
+			<h2>
+				{{ block.title }}
+			</h2>
+		{% endif %}
+		{% if block.button %}
+			{% include 'partials/button.twig' with {
+				button: block.button,
+				class: 'button--blue'
+			} %}
+		{% endif %}
+	</div>
+	<div class="flex flex-col sm:grid grid-cols-12 gap-6 lg:gap-12">
+		{% for post in block_posts %}
+			<div class="col-span-6 lg:col-span-4">
+				{% include 'partials/tease.twig' with {
+					excerpt: true,
+					text: post.post_excerpt ? post.excerpt.read_more(false) : ''
+				} %}
+			</div>
+		{% endfor %}
+	</div>
+</div>

@@ -1,0 +1,24 @@
+<section class="section section--no-pb section--pull-up section--lg-no-pt app-info">
+	<div class="container">
+		<div class="flex flex-col lg:items-center lg:grid grid-cols-12 gap-6 lg:gap-20">
+			<div class="col-span-6">
+				<div class="wysiwyg wysiwyg--ut lg:pe-10">
+					<h2>
+						{{ block.title }}
+					</h2>
+					{{ block.text }}
+				</div>
+			</div>
+
+			<div class="col-span-6">
+				<div class="app-info__image"
+					style="--colour: {{ block.background_colour }};">
+					<figure class="rotating-image">
+						<img src="{{ get_image(block.image) }}"
+							alt="{{ get_image(block.image).alt }}" />
+					</figure>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

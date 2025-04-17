@@ -1,0 +1,46 @@
+<section class="section">
+	<div class="container">
+		<div class="flex flex-col-reverse md:grid grid-cols-12 gap-10 lg:gap-20 md:items-center">
+			<div class="col-span-4 flex justify-center">
+				<img class="round"
+					src="{{ get_image(block.image).src|resize(400, 400, 'center') }}"
+					alt="{{ get_image(block.image).alt }}"
+					height="400"
+					width="400" />
+			</div>
+
+			<div class="col-span-8">
+				{% if block.title %}
+					<h2 class="mb-10 lg:mb-16">
+						{{ block.title }}
+					</h2>
+				{% endif %}
+
+				<div class="team">
+					<p class="team__details">
+						<strong>{{ block.name }}</strong><br />
+						{{ block.job_title }}
+					</p>
+
+					<div class="team__bio wysiwyg mb-10">
+						{{ block.bio }}
+					</div>
+
+					{% if block.linkedin %}
+						<a href="{{ block.linkedin }}"
+							target="_blank"
+							aria-label="Follow {{
+							block.name
+							}} on LinkedIn. Opens in a new tab.">
+							{{
+								theme_get_svg(
+									site.theme.link ~ '/static/icons/linkedin.svg'
+								)
+							}}
+						</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

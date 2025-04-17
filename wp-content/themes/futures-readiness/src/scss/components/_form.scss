@@ -1,0 +1,66 @@
+.contact-form {
+	@include down(xxl) {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+
+	br {
+		display: none;
+	}
+
+	p {
+		margin: 0;
+	}
+
+	.form-grid {
+		row-gap: 3rem;
+		column-gap: 6rem;
+
+		@include down(xxl) {
+			column-gap: 3rem;
+		}
+
+		@include down(md) {
+			row-gap: 1.5rem;
+		}
+
+		.wpcf7-not-valid-tip {
+			font-size: rem(18);
+			margin-top: 0.5rem;
+		}
+
+		label {
+			font-weight: 600;
+			color: $dark;
+			margin-bottom: 1rem;
+		}
+
+		input {
+			border-radius: 100px;
+			height: 60px;
+			padding: 0 1rem;
+			max-width: 100%;
+
+			@include down(md) {
+				height: 50px;
+			}
+		}
+	}
+	.button-wrap {
+		margin-top: 2rem;
+
+		p {
+			display: flex;
+			flex-direction: column-reverse;
+			justify-content: center;
+
+			.wpcf7-spinner {
+				margin: 0 auto 1rem;
+			}
+
+			.button {
+				align-self: center;
+			}
+		}
+	}
+}

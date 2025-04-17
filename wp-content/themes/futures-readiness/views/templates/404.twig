@@ -1,0 +1,24 @@
+{% extends 'layouts/base.twig' %}
+
+{% block content %}
+	<div class="section section--main section--404">
+		<div class="container">
+			<div class="error-404 text-center">
+				<div class="error">
+					{{ theme_get_svg(site.theme.link ~ '/static/404.svg') }}
+				</div>
+				<div class="error-content">
+					<h1 class="h2 white">
+						Page not found
+					</h1>
+					{{ error_content }}
+					<a class="mt-8"
+						href="{{ site.url }}"
+						class="button button--accent">
+						Back to homepage
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

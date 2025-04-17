@@ -1,0 +1,36 @@
+{% set section_classes =
+	[
+		'section',
+		'section--text',
+		'section--' ~ block.background_colour,
+		block.remove_top_padding ? 'section--no-pt' : null,
+		block.remove_bottom_padding ? 'section--no-pb' : null
+	]|join(' ')
+%}
+
+<section class="{{ section_classes }}">
+	<div class="container">
+		<div class="flex flex-col lg:grid grid-cols-12 lg:gap-20">
+			<div class="col-span-6">
+				<h2>
+					{{ block.title }}
+				</h2>
+			</div>
+
+			<div class="col-span-6">
+				<div class="wysiwyg">
+					{{ block.text }}
+				</div>
+
+				{% if block.button %}
+					<div class="mt-8">
+						{% include 'partials/button.twig' with {
+							button: block.button,
+							class: 'button--hero'
+						} %}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</section>

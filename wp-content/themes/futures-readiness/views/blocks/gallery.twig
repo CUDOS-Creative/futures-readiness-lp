@@ -1,0 +1,12 @@
+<div class="overflow-hidden">
+	{% if block.title %}
+		<div class="container text-center pb-8">
+			<h2>
+				{{ block.title }}
+			</h2>
+		</div>
+	{% endif %}
+	{% include 'partials/gallery.twig' with {
+		gallery: block.gallery
+	} %}
+</div>

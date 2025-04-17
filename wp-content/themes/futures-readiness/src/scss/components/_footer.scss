@@ -1,0 +1,73 @@
+.footer {
+	&__inner {
+		display: flex;
+		gap: 4rem;
+		justify-content: space-between;
+		padding: 5rem 0;
+
+		@include down(lg) {
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			padding: 3rem 0;
+			gap: 3rem;
+		}
+	}
+
+	.footer__contact {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+
+		@include down(lg) {
+			gap: 1rem;
+		}
+
+		span {
+			display: flex;
+			align-items: center;
+			i {
+				margin-right: 1rem;
+				flex-shrink: 0;
+			}
+			svg {
+				width: 30px;
+				height: auto;
+			}
+		}
+
+		.email {
+			word-break: break-all;
+			text-align: left;
+		}
+	}
+
+	&__logo {
+		svg {
+			width: 300px;
+			height: auto;
+			max-width: 100%;
+		}
+	}
+
+	.footer__social {
+		display: block;
+		flex-grow: 0;
+		align-self: flex-start;
+
+		svg {
+			path {
+				transition: fill 0.3s ease;
+			}
+		}
+		&:hover,
+		&:focus {
+			svg {
+				path {
+					fill: $blue;
+				}
+			}
+		}
+	}
+}

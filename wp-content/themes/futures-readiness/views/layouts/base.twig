@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html {{ site.language_attributes }}>
+	{% block head %}
+		{% include 'partials/head.twig' %}
+	{% endblock %}
+
+	<body class="{{ body_class }}">
+		{{ function('wp_body_open') }}
+		<a class="skip-link sr-only" href="#content">
+			{{ _e('Skip to content') }}
+		</a>
+
+    {% block header %}
+      {% include 'partials/header.twig' %}
+    {% endblock %}
+
+		<main id="content">
+			{% block content %}
+				Sorry, no content
+			{% endblock %}
+		</main>
+
+		{% block footer %}
+			{% include 'partials/footer.twig' %}
+		{% endblock %}
+
+		{{ function('wp_footer') }}
+		{% do action('get_footer') %}
+		{{ footer_scripts }}
+	</body>
+</html>

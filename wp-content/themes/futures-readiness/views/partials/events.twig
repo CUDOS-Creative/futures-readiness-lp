@@ -1,0 +1,21 @@
+{% set events = events|default(theme_get_posts('tribe_events')) %}
+
+<div class="flex flex-col sm:grid grid-cols-12 gap-6 lg:gap-12">
+	{% for post in events %}
+		{% set start_date = post._EventStartDate|date('jS M Y') %}
+		{% set end_date = post._EventEndDate|date('jS M Y') %}
+
+		{% set event_date = start_date == end_date
+			? start_date
+			: (start_date|date('jS M')) ~ ' - ' ~ end_date
+		%}
+
+		<div class="col-span-6 lg:col-span-4">
+			{% include 'partials/tease.twig' with {
+				date: event_date ? event_date : post.activity_date,
+				categories: post.terms('tribe_events_cat'),
+				excerpt: true
+			} %}
+		</div>
+	{% endfor %}
+</div>

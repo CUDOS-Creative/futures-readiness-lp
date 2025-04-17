@@ -1,0 +1,26 @@
+<div class="hero {{ hero.background_image ? 'hero--image' : '' }}"
+	style="{{
+	hero.background_image
+		? 'background-image: url(' ~ get_image(post.thumbnail).src ~ ');'
+		: ''
+	}}">
+	<div class="container">
+		<div class="hero__inner" data-aos="fade-up">
+			<h1>
+				{{ hero.title ? hero.title : post.title }}
+			</h1>
+
+			{% if hero.background_image %}
+				<div class="hero__logo">
+					{{ theme_get_svg(site.theme.link ~ '/static/logo.svg') }}
+				</div>
+			{% endif %}
+
+			{% if not hero.background_image and hero.display_date %}
+				<p>
+					Effective date: {{ post.modified_date|date('F j, Y') }}
+				</p>
+			{% endif %}
+		</div>
+	</div>
+</div>

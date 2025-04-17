@@ -1,0 +1,23 @@
+<section class="section section--main">
+	<div class="container">
+		{% if block.title %}
+			<div class="text-center">
+				<h2 class="accent mb-5">
+					{{ block.title }}
+				</h2>
+			</div>
+		{% endif %}
+
+		{% if block.description %}
+			<div class="text-center width-m mb-8 lg:mb-12">
+				<p>
+					{{ block.description }}
+				</p>
+			</div>
+		{% endif %}
+
+		<div class="contact-form">
+			{{ fn('do_shortcode', block.cf7_shortcode) }}
+		</div>
+	</div>
+</section>

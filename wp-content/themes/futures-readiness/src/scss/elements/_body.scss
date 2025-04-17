@@ -1,0 +1,12 @@
+body {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	font-optical-sizing: auto;
+	font-style: normal;
+	line-height: 1.4;
+	font-size: rem(22);
+
+	@include down(md) {
+		font-size: rem(18);
+	}
+}

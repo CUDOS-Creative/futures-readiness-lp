@@ -1,0 +1,26 @@
+{% if menu %}
+	{% set halfway = ((items|length) / 2)|round(0, 'ceil') %}
+	{% set first_col = items|slice(0, halfway) %}
+	{% set second_col = items|slice(halfway) %}
+
+	<div class="footer-menu-columns">
+		<ul>
+			{% for item in first_col %}
+				<li class="{{ item.classes|join(' ') }}">
+					<a target="{{ item.target }}" href="{{ item.link }}">
+						{{ item.title }}
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+		<ul>
+			{% for item in second_col %}
+				<li class="{{ item.classes|join(' ') }}">
+					<a target="{{ item.target }}" href="{{ item.link }}">
+						{{ item.title }}
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endif %}

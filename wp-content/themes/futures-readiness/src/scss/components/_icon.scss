@@ -1,0 +1,20 @@
+.icon {
+  text-align: center;
+
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  p {
+    font-weight: 700;
+    font-size: rem(20);
+    margin: 0 auto;
+    max-width: 150px;
+    line-height: 1.22;
+
+    @include down(lg) {
+      font-size: rem(16);
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{% set id = loop.index %}
+
+<div class="container">
+<div class="lg:grid grid-cols-12 gap-8">
+  <div class="col-span-12 lg:col-span-10 lg:col-start-2">
+	<div class="tabs">
+		<ul data-tabs class="tabs-nav" role="tablist">
+			{% for item in block.tabs %}
+				<li>
+					<a {{ loop.first ? 'data-tabby-default' : '' }}
+						href="#tab-content-{{ id }}-{{ loop.index }}">
+						{{ item.tab_title }}
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+
+		{% for item in block.tabs %}
+			<div id="tab-content-{{ id }}-{{ loop.index }}">
+				{% if item.tab_content %}
+					<div class="wysiwyg">
+						{{ item.tab_content }}
+					</div>
+				{% endif %}
+
+				{% if item.boxes|length %}
+					<div class="tabs__boxes flex flex-col md:grid grid-cols-12 gap-6">
+						{% for item in item.boxes %}
+							<div class="col-span-6 lg:col-span-4 tabs__box" style="--box-color: {{ item.color }};">
+                {% if item.link %}
+                <a href="{{ item.link.url }}" target="{{ item.link.target ? item.link.target : '_self' }}">
+                {% else %}
+                <div>
+                {% endif %}
+                <h4>{{ item.title }}</h4>
+                <p>{{ item.description }}</p>
+                {{ item.link ? '</a>' : '</div>' }}
+              </div>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+		{% endfor %}
+	</div>
+	<!-- .tabs -->
+  </div>
+  </div>
+</div>

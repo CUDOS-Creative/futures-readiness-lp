@@ -1,0 +1,60 @@
+{% set first_column = accordion|slice(0, 6) %}
+{% set second_column = accordion|slice(6) %}
+
+<div class="flex flex-col lg:grid grid-cols-12 gap-4 lg:gap-16">
+	<div class="{{
+		second_column is empty
+			? 'col-span-8 col-start-3'
+			: 'col-span-6'
+		}}">
+		<div class="accordion-container" data-closed="1">
+			{% for item in first_column %}
+				<div class="ac">
+					<h3 class="ac-header">
+						<button type="button" class="ac-trigger">
+							{{ item.title }}
+						</button>
+						<span class="ac-icon">
+							{{
+								theme_get_svg(site.theme.link ~ '/static/accordion.svg')
+							}}
+						</span>
+					</h3>
+					<div class="ac-panel">
+						<div class="ac-panel__inner wysiwyg">
+							{{ item.content }}
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	{% if second_column is not empty %}
+		<div class="col-span-6">
+			<div class="accordion-container" data-closed="1">
+				{% for item in second_column %}
+					<div class="ac">
+						<h3 class="ac-header">
+							<button type="button" class="ac-trigger">
+								{{ item.title }}
+							</button>
+							<span class="ac-icon">
+								{{
+									theme_get_svg(
+										site.theme.link ~ '/static/accordion.svg'
+									)
+								}}
+							</span>
+						</h3>
+						<div class="ac-panel">
+							<div class="ac-panel__inner wysiwyg">
+								{{ item.content }}
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	{% endif %}
+</div>

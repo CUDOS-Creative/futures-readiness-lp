@@ -1,0 +1,33 @@
+{% set posts = block.show_posts_from == 'custom'
+	? get_posts(block.custom)
+	: theme_get_posts(
+		'post',
+		3,
+		block.show_posts_from == 'category' ? block.category : null
+	)
+%}
+
+<div class="container">
+	<div class="spread">
+		{% if block.title %}
+			<h2>
+				{{ block.title }}
+			</h2>
+		{% endif %}
+		{% if block.button %}
+			{% include 'partials/button.twig' with {
+				button: block.button,
+				class: 'button--blue'
+			} %}
+		{% endif %}
+	</div>
+	<div class="flex flex-col sm:grid grid-cols-12 gap-6 lg:gap-12">
+		{% for post in posts %}
+			<div class="col-span-6 lg:col-span-4">
+				{% include 'partials/tease.twig' with {
+					date: post.date|date('jS M Y')
+				} %}
+			</div>
+		{% endfor %}
+	</div>
+</div>

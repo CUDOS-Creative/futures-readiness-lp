@@ -1,0 +1,24 @@
+{% if image %}
+  {% set sizes = sizes is defined ? sizes : '(max-width: 767px) 544px, (max-width: 1023px) 672px, (max-width: 1279px) 928px, (max-width: 1535px) 1232px, 1488px' %}
+  {% set class = class is defined ? class : '' %}
+  {# {% set loading = loading is defined ? loading : 'lazy' %} #}
+
+  {# Define available image widths (breakpoints) #}
+  {% set breakpoints = [544, 672, 928, 1232, 1488, image.width] %}
+
+  {# Filter breakpoints to only include those smaller than or equal to the actual image width #}
+  {% set valid_sizes = breakpoints | filter(size => size <= image.width) %}
+
+  {# Build srcset dynamically #}
+  {% set srcset = valid_sizes | map(size => image.src|resize(size) ~ ' ' ~ size ~ 'w') | join(', ') %}
+
+  <img src="{{ image.src }}" 
+       srcset="{{ srcset }}" 
+       sizes="{{ sizes }}"
+       width="{{ image.width }}" 
+       height="{{ image.height }}" 
+       alt="{{ image.alt ?: 'Image' }}" 
+       class="{{ class }}"
+       data-aos="{{ aos }}"
+       >
+{% endif %}

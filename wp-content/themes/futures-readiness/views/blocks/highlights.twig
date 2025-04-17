@@ -1,0 +1,38 @@
+<div class="container pb-4">
+	<div class="lg:grid grid-cols-12 gap-6 lg:gap-12">
+		<div class="col-span-5 col-start-2 pe-12">
+			<h2>
+				{{ block.title }}
+			</h2>
+			<p>
+				{{ block.description }}
+			</p>
+
+			<div class="highlight-buttons">
+				{% for item in block.links %}
+					{% set icon_url = item.icon
+						? get_image(item.icon).src
+						: theme.link ~ '/static/map-pin.svg'
+					%}
+					<button class="highlight-button {{ loop.first ? 'active' }}"
+						style="{{ '--button-color:' ~ item.colour ~ ';' }}"
+						data-index="{{ loop.index0 }}"
+						aria-label="Show {{ item.custom_title }}.">
+						<span>{{ theme_get_svg(icon_url) }}</span>
+						{{ item.custom_title }}
+					</button>
+				{% endfor %}
+			</div>
+		</div>
+
+		<div class="col-span-5 col-start-7">
+			<div class="highlights swiper">
+				<div class="swiper-wrapper">
+					{% for item in block.links %}
+						{% include 'partials/highlights-slide.twig' %}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,5 @@
+.container {
+	@include up(xl) {
+		max-width: 1312px !important;
+	}
+}

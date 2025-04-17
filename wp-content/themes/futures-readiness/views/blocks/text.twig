@@ -1,0 +1,38 @@
+{% set section_classes =
+	[
+		'section',
+		'section--text',
+		'section--' ~ block.background_colour,
+		block.remove_top_padding ? 'section--no-pt' : null,
+		block.remove_bottom_padding ? 'section--no-pb' : null
+	]|join(' ')
+%}
+
+<section class="{{ section_classes }}">
+	<div class="container">
+		{% if block.title %}
+			<div class="text-center">
+				<h2 class="{{ block.heading_colour == 'white' ? 'white' : '' }}">
+					{{ block.title }}
+				</h2>
+			</div>
+		{% endif %}
+
+		{% if block.text %}
+			<div class="text-center width-m">
+				<div class="wysiwyg">
+					{{ block.text }}
+				</div>
+			</div>
+		{% endif %}
+
+		{% if block.button %}
+			<div class="text-center pt-4">
+				{% include 'partials/button.twig' with {
+					button: block.button,
+					class: 'button--tertiary button--round'
+				} %}
+			</div>
+		{% endif %}
+	</div>
+</section>

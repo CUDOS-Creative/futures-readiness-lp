@@ -1,0 +1,24 @@
+<div class="swiper-container">
+	<div class="gallery swiper" data-slides="{{ gallery|length }}">
+		<div class="swiper-wrapper">
+			{% for item in gallery %}
+				{% set image = get_image(item) %}
+				<div class="swiper-slide">
+					<figure>
+						<img src="{{ image.src|resize(824, 569, 'center') }}"
+							alt="{{ image.alt }}"
+							width="824"
+							height="569" />
+						{% if image.caption %}
+							<figcaption>
+								{{ image.caption }}
+							</figcaption>
+						{% endif %}
+					</figure>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	<!-- Swiper Pagination -->
+	<div class="swiper-pagination"></div>
+</div>

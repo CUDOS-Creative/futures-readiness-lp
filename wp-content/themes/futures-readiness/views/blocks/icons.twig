@@ -1,0 +1,72 @@
+<section class="section section--secondary">
+	<div class="container">
+		{% if block.title %}
+			<div class="lg:text-center">
+				<h2 class="white mb-5 lg:mb-8">
+					{{ block.title }}
+				</h2>
+			</div>
+		{% endif %}
+
+		{% if block.description %}
+			<div class="lg:text-center width-m mb-12 lg:mb-20">
+				<p>
+					{{ block.description }}
+				</p>
+			</div>
+		{% endif %}
+
+		<div class="flex flex-col sm:grid grid-cols-12 gap-6 gap-y-12 lg:gap-12 lg:gap-y-20">
+			{% for item in block.icons %}
+				<div class="col-span-6 lg:col-span-4">
+					<div class="icon-box">
+						<div class="icon-box__icon">
+							<img src="{{ get_image(item.icon).src }}"
+								alt="{{ get_image(item.icon).alt }}"
+								height="48"
+								width="48" />
+						</div>
+						<div class="icon-box__content">
+							<h3 class="white lc">
+								{{ item.title }}
+							</h3>
+							<p>
+								{{ item.description }}
+							</p>
+
+							{% if item.link %}
+								<a class="link mt-4"
+									href="{{ item.link.url }}"
+									target="{{
+									item.link.target
+										? item.link.target
+										: '_self'
+									}}">
+									<span>{{ item.link.title }}</span>
+									<svg width="9"
+										height="12"
+										viewBox="0 0 9 12"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg">
+										<path d="M2.37372 11.9496L8.08072 6.24264L2.37372 0.535645L0.959717 1.94964L5.25272 6.24264L0.959717 10.5356L2.37372 11.9496Z"
+											fill="#0B1416" />
+									</svg>
+								</a>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+
+		{% if block.disclaimer %}
+			<div class="grid grid-cols-12 mt-6 lg:mt-20">
+				<div class="col-span-12 lg:col-span-8">
+					<p>
+						{{ block.disclaimer }}
+					</p>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+</section>

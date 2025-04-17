@@ -1,0 +1,7 @@
+<div class="accreditations pt-4 lg:pt-0 grid gap-8 grid-cols-1 sm:grid-cols-4 md:grid-cols-4 items-center">
+	{% for item in accreditations %}
+		<div class="accreditations__item flex justify-center">
+			<img src="{{ get_image(item).src }}" alt="{{ get_image(item).alt }}" />
+		</div>
+	{% endfor %}
+</div>

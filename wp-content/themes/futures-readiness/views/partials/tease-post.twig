@@ -1,0 +1,35 @@
+{% set excerpt = post.excerpt.read_more(false) %}
+
+<a class="tease tease--blog" href="{{ post.link }}">
+	<figure class="tease__image">
+		<img src="{{ get_image(post.thumbnail).src|resize(690, 498, 'center') }}"
+			alt="{{ get_image(post.thumbnail).alt }}" />
+	</figure>
+
+	<div class="flex gap-x-6 gap-y-2 flex-wrap pt-5 pb-3">
+		{% for category in post.categories %}
+			<span class="tease__cat">{{ category.name }}</span>
+		{% endfor %}
+	</div>
+
+	<h3 class="mb-2">
+		{{ post.title }}
+	</h3>
+
+	{% if excerpt %}
+		<p class="tease__excerpt mb-8">
+			{{ excerpt }}
+		</p>
+	{% endif %}
+
+	<div class="tease__meta">
+		<img src="{{ post.author.avatar }}" alt="{{ post.author }}" />
+		<div>
+			<span class="tease__author">{{ post.author }}</span>
+			<span class="tease__date">
+				{{ post.date|date('d M Y') }} <span class="px-1">&bull;</span>
+				{{ get_read_time(post) }} min read
+			</span>
+		</div>
+	</div>
+</a>

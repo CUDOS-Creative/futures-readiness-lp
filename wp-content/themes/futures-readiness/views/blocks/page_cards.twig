@@ -1,0 +1,13 @@
+{% set posts = get_posts(block.page_cards) %}
+
+<section class="section">
+	<div class="container">
+		<div class="flex flex-col sm:grid grid-cols-12 gap-6 lg:gap-12">
+			{% for post in posts %}
+				<div class="col-span-6 lg:col-span-4">
+					{% include 'partials/tease.twig' %}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>

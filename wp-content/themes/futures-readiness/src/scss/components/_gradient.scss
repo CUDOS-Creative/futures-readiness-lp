@@ -1,0 +1,8 @@
+.gradient {
+	height: 36px;
+	background: $gradient;
+
+	@include down(md) {
+		height: 24px;
+	}
+}
