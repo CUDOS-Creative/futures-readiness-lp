@@ -1,0 +1,21 @@
+name: Deploy to WP Engine
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+        # Deploy files to WP Engine
+      - name: GitHub Action Deploy to WP Engine
+        uses: wpengine/github-action-wpe-site-deploy@v3
+        with:
+          WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}
+          WPE_ENV: futuresready
+          SRC_PATH: "wp-content/themes/futures-readiness/"
+          REMOTE_PATH: "wp-content/themes/futures-readiness/"
+          CACHE_CLEAR: TRUE
+          SCRIPT: "wp-content/bin/post-deploy.sh"
